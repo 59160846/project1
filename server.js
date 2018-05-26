@@ -7,16 +7,21 @@ let contacts =[
     {name:"tantai",phoneNumber:"096121231"},
     {name:"kanapoj",phoneNumber:"0636251929"}
 ]
-///คณพศ 59160846
 app.use(bodyParser.json())
 app.use(cors())
 
 /// TODO: Develop GET /contacts
-
+app.get('/contacts',(req,res) => {
+    res.json(contacts)
+})
 
 
 /// TODO: Develop POST /contacts
-
+app.post('/contacts',(req,res)=>{
+    let newContact = req.body
+    contacts.push(newContact)
+    res.status(201).json(newContact)
+})
 
 
 app.listen(3000, () => {
